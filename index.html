@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmirkHat Šifra - Šifrování textu do slov</title>
+    <meta name="description" content="Moderní nástroj pro šifrování a dešifrování textu pomocí náhodných slov">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <span class="logo">🎩</span>
+                SmirkHat Šifra
+            </h1>
+            <p class="subtitle">Šifrování textu do náhodných českých slov</p>
+            <button class="theme-toggle" id="themeToggle" aria-label="Přepnout téma">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </header>
+
+        <main class="main">
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="encrypt" aria-pressed="true">
+                    <span class="mode-icon">🔒</span>
+                    Šifrovat
+                </button>
+                <button class="mode-btn" data-mode="decrypt" aria-pressed="false">
+                    <span class="mode-icon">🔓</span>
+                    Dešifrovat
+                </button>
+            </div>
+
+            <form class="form" id="cryptoForm">
+                <div class="input-group">
+                    <label for="textInput" class="label">Text k šifrování</label>
+                    <textarea 
+                        id="textInput" 
+                        class="textarea" 
+                        placeholder="Zadejte text, který chcete zašifrovat..."
+                        rows="4"
+                        maxlength="1048576"
+                        required
+                        aria-describedby="textHelp"
+                    ></textarea>
+                    <small id="textHelp" class="help-text">Maximálně 1 048 576 znaků</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="passwordInput" class="label">Heslo</label>
+                    <input 
+                        type="password" 
+                        id="passwordInput" 
+                        class="input" 
+                        placeholder="Zadejte heslo pro šifrování..."
+                        maxlength="256"
+                        required
+                        aria-describedby="passwordHelp"
+                    >
+                    <small id="passwordHelp" class="help-text">Maximálně 256 znaků</small>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Zašifrovat</span>
+                    <span class="loading-spinner" aria-hidden="true"></span>
+                </button>
+            </form>
+
+            <div class="result-section" id="resultSection" aria-live="polite">
+                <div class="result-header">
+                    <h2 class="result-title">Výsledek</h2>
+                    <button class="copy-btn" id="copyBtn" aria-label="Kopírovat výsledek">
+                        <span class="copy-icon">📋</span>
+                    </button>
+                </div>
+                <div class="result-content">
+                    <textarea 
+                        id="resultText" 
+                        class="result-textarea" 
+                        readonly
+                        placeholder="Zde se zobrazí výsledek..."
+                        rows="4"
+                    ></textarea>
+                    <div class="result-stats" id="resultStats"></div>
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage" role="alert" aria-live="assertive"></div>
+        </main>
+
+        <footer class="footer">
+            <p>Vytvořil Dast - SmirkHat.org</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
